@@ -414,9 +414,9 @@ img {
   width: 100%;
 }
 
-.image_resized {
+/* .image_resized {
   width: auto !important;
-}
+} */
 
 figcaption {
   display: flex;
