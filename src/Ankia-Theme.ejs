@@ -82,6 +82,12 @@
     }).replaceAll( /class="language-application-(\w+)"/g , (...match) => {
         match[0] = match[0].replace("-application", "");
         return match[0];
+    }).replaceAll(/-csrc"/g , (...match) => {
+        match[0] = match[0].replace("-csrc", "-c");
+        return match[0];
+    }).replaceAll(/language-text-x-c-src"/g , (...match) => {
+        match[0] = match[0].replace("-text-x-c-src", "-c");
+        return match[0];
     }).replaceAll("language-application-javascript-env-backend" , "language-javascript").replaceAll("language-application-javascript-env-frontend" , "language-javascript");
     %>
 
