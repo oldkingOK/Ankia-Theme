@@ -59,6 +59,7 @@
   <% } %>
   <%- header %>
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.38/dist/twikoo.all.min.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </head>
 
 <%
@@ -665,14 +666,16 @@
         <hr>
         <div>
           <div>
-            <span>本站已稳定运行：<%= Math.ceil((new Date() - new Date(subRoot.note.getLabelValue("blogStartTime"))) / (24 * 60 * 60 * 1000)) %>天</span>
-    </div>
-    <!-- 开源不易，请勿注释以下内容 -->
-    <span>Powered by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zadam/trilium">Trilium</a><b> X </b><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/oldkingOK/Ankia-Theme/tree/ok">Ankia</a></span>
-  </div>
-  <div>
-    <span>Copyright © <%= subRoot.note.getLabelValue("blogStartTime").slice(0,4) %>-<%= new Date().getFullYear() %>. All Rights Reserved.</span>
-  </div>
+            <span>运行时间 <%= Math.ceil((new Date() - new Date(subRoot.note.getLabelValue("blogStartTime"))) / (24 * 60 * 60 * 1000)) %> 天</span>
+            <span id="busuanzi_container_site_pv">| 总访问量 <span id="busuanzi_value_site_pv"></span></span>  
+          </div>
+          <!-- 开源不易，请勿注释以下内容 -->
+          <span>Powered by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zadam/trilium">Trilium</a><b> X </b><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/oldkingOK/Ankia-Theme/tree/ok">Ankia</a></span>
+
+        </div>
+        <div>
+          <span>Copyright © oldkingOK <%= subRoot.note.getLabelValue("blogStartTime").slice(0,4) %>-<%= new Date().getFullYear() %>. All Rights Reserved.</span>
+        </div>
   </div>
 </body>
 
