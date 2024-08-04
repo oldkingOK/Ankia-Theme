@@ -363,9 +363,9 @@
                         const linkHref = isExternalLink ? childNote.getLabelValue('shareExternalLink') : `./${childNote.shareId}`;
                         const target = isExternalLink ? `target="_blank" rel="noopener noreferrer"` : '';
                     %>
-        <div id="blogItems" style="<%= childNote.hasLabel("blogPostTop") ? 'order: -1' : ''%>">
+        <div class="blogItems" style="<%= childNote.hasLabel("blogPostTop") ? 'order: -1' : ''%>">
           <% if (childNote.hasLabel("headerImage") && childNote.getLabelValue("headerImage")!=null) { %>
-                <div id="blogItemSummaryImgContain">
+                <div class="blogItemSummaryImgContain">
                   <img style="object-fit: cover;" src="<%= childNote.getLabelValue("headerImage") %>">
                 </div>
 

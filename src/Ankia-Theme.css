@@ -262,7 +262,7 @@ a {
 }
 
 @media (max-width: 700px) {
-  #blogItems {
+  .blogItems {
     width: 100% !important;
     flex-direction: column !important;
     max-height: 250px !important;
@@ -345,7 +345,7 @@ a {
     width: 80% !important;
   }
 
-  #blogItemSummaryImgContain {
+  .blogItemSummaryImgContain {
     width: 100% !important;
     height: 150px !important;
     clip-path: none !important;
@@ -566,7 +566,7 @@ nav#childLinks {
   overflow: hidden;
 }
 
-#blogItems {
+.blogItems {
   display: flex;
   justify-content: center;
   height: 100%;
@@ -582,7 +582,7 @@ nav#childLinks {
   text-decoration: none;
 }
 
-#blogItems:hover {
+.blogItems:hover {
   transform: scale(1.04);
 }
 
@@ -615,7 +615,7 @@ nav#childLinks {
   animation: shake 0.3s ease-in-out;
 }
 
-#blogItemSummaryImgContain {
+.blogItemSummaryImgContain {
   width: calc(80%);
   height: auto;
   float: left;
