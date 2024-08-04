@@ -871,11 +871,15 @@ ul#toc {
 #footer {
   text-align: center;
   font-size: medium;
-  color: #6c7380;
+  color: #f0f0f0;
   margin-top: 30px;
   position: relative;
   height: 100px;
   width: 100%;
+}
+
+#footer a {
+  color: #92dcff;
 }
 
 .cardContainerStyle {
