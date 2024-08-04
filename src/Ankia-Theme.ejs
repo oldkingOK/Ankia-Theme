@@ -42,7 +42,7 @@
   <meta name="description" content="<%= siteDescription %>">
   <link href="api/notes/<%= note.getRelation("prismCSS").value %>/download" rel="stylesheet">
   <script type="module" src="api/notes/<%= note.getRelation("prismJS").value %>/download"></script>
-  <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CUbuntu%20Mono:400,400italic,700,700italic&amp;display=swap" media="all" onload="this.media='all'">
   <% if (note.hasRelation("shareFavicon")) { %>
   <link rel="shortcut icon" href="api/notes/<%= note.getRelation("shareFavicon").value %>/download">
   <% } else { %>

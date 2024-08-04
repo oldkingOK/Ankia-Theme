@@ -5,7 +5,7 @@
  * Licensed Apache-2.0 © 东东
  */
 body {
-  font-family: "LXGW WenKai Screen", sans-serif;
+  font-family: Mulish,'Noto Serif SC','Noto Serif JP',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
   line-height: 1.5;
   font-size: 17px;
   margin: 0;
@@ -25,7 +25,7 @@ body {
 
 pre,
 code {
-  font-family: LXGWWenKaiMono monospace;
+  font-family: "Ubuntu Mono" monospace;
 }
 
 #layout {
