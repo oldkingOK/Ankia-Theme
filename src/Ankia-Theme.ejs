@@ -366,7 +366,7 @@
         <div class="blogItems" style="<%= childNote.hasLabel("blogPostTop") ? 'order: -1' : ''%>">
           <% if (childNote.hasLabel("headerImage") && childNote.getLabelValue("headerImage")!=null) { %>
                 <div class="blogItemSummaryImgContain">
-                  <img style="object-fit: cover;" src="<%= childNote.getLabelValue("headerImage") %>">
+                  <img src="<%= childNote.getLabelValue("headerImage") %>">
                 </div>
 
                 <% } %>

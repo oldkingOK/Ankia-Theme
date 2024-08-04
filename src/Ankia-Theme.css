@@ -586,6 +586,10 @@ nav#childLinks {
   transform: scale(1.04);
 }
 
+.blogItems:hover img {
+  transform: scale(1.06);
+}
+
 .blogMetadate {
   margin-right: 1.2em;
   font-size: small;
@@ -625,6 +629,11 @@ nav#childLinks {
   clip-path: polygon(0 0,92% 0,100% 100%,0 100%);
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
+}
+
+.blogItemSummaryImgContain img {
+  object-fit: cover;
+  transition: all .3s ease;
 }
 
 #contentHeader {
