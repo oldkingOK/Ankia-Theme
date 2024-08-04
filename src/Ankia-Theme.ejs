@@ -364,6 +364,12 @@
                         const target = isExternalLink ? `target="_blank" rel="noopener noreferrer"` : '';
                     %>
         <div id="blogItems" style="<%= childNote.hasLabel("blogPostTop") ? 'order: -1' : ''%>">
+          <% if (childNote.hasLabel("headerImage") && childNote.getLabelValue("headerImage")!=null) { %>
+                <div id="blogItemSummaryImgContain">
+                  <img style="object-fit: cover;" src="<%= childNote.getLabelValue("headerImage") %>">
+                </div>
+
+                <% } %>
           <div class="blogItemsMainContain">
             <a style="color: black;" href="<%= linkHref %>" <%= target %> class="type-<%= childNote.type %>">
               <div>
@@ -373,12 +379,6 @@
                 <b id="blogItemTitle"><%= childNote.title %></b>
               </div>
               <div>
-                <% if (childNote.hasLabel("headerImage") && childNote.getLabelValue("headerImage")!=null) { %>
-                <div id="blogItemSummaryImgContain">
-                  <img src="<%= childNote.getLabelValue("headerImage") %>">
-                </div>
-
-                <% } %>
                 <% if (childNote.hasLabel("summary") && childNote.getLabelValue("summary")!=null) { %>
                 <div id="blogItemSummary" style="font-size:90%;font-weight: 400;margin-top:5px;"><%= childNote.getLabelValue("summary") %></div>
                 <% } %>

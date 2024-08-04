@@ -261,9 +261,11 @@ a {
   content: none;
 }
 
-@media (max-width: 70em) {
+@media (max-width: 700px) {
   #blogItems {
     width: 100% !important;
+    flex-direction: column !important;
+    max-height: 250px !important;
   }
 
   #onTop {
@@ -344,8 +346,12 @@ a {
   }
 
   #blogItemSummaryImgContain {
-    width: 100px !important;
-    height: 100px !important;
+    width: 100% !important;
+    height: 150px !important;
+    clip-path: none !important;
+    border-top-left-radius: inherit !important;
+    border-top-right-radius: inherit !important;
+    border-bottom-left-radius: 0 !important;
   }
 
   #toggleMenuButton {
@@ -569,6 +575,7 @@ nav#childLinks {
   background: #ffffffbf;
   border-radius: 10px;
   max-width: 1000px;
+  max-height: 150px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 18%);
   transition: transform 0.3s ease-in-out;
   color: black;
@@ -609,18 +616,15 @@ nav#childLinks {
 }
 
 #blogItemSummaryImgContain {
-  border-radius: 5px;
-  padding: 2px;
-  border: 1px dashed #d4bdb1;
-  margin-left: 5px;
-  width: 150px;
-  height: 150px;
-  float: right;
-  margin-right: 10px;
-  margin-top: 10px;
+  width: calc(80%);
+  height: auto;
+  float: left;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   overflow: hidden;
+  clip-path: polygon(0 0,92% 0,100% 100%,0 100%);
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
 }
 
 #contentHeader {
