@@ -528,8 +528,9 @@
                     target.push(makeEntry(headingMatches[m]));
                 }
                 %>
-    <div id="toc-pane" style="<%=subRoot.note.hasLabel("swapInfoCard")?"left:10px":"right:10px"%>">
+    <div id="toc-pane" class="bloggerInfoCardStyle" style="<%=subRoot.note.hasLabel("swapInfoCard")?"left:10px":"right:10px"%>">
       <strong>目录</strong>
+      <hr>
       <ul id="toc">
         <% for (const entry of toc) { %>
         <%- include('toc_item', {entry}) %>
