@@ -46,6 +46,7 @@ code {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
   line-height: 1.5;
   position: relative;
+  animation: scaleInTitle 0.2s ease-in-out;
 }
 
 #layout-header #site-subtitle {
@@ -564,6 +565,16 @@ h5:before {
     opacity: 1;
     scale: 1;
     transform: translateY(0px);
+  }
+}
+
+@keyframes scaleInTitle {
+  from {
+    scale: 0.8;
+  }
+
+  to {
+    scale: 1;
   }
 }
 
