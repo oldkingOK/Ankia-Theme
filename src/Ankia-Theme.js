@@ -99,7 +99,7 @@ document.addEventListener(
     var prevScrollPos = window.pageYOffset;
     const scrollDistance = 10;
 
-    window.onscroll = function () {
+    window.addEventListener('scroll', function() {
       var currentScrollPos = window.pageYOffset;
       const navigationBar = document.getElementById("navigationBar");
       if (prevScrollPos > currentScrollPos) {
@@ -112,7 +112,7 @@ document.addEventListener(
       }
 
       prevScrollPos = currentScrollPos;
-    };
+    });
   },
   false
 );
@@ -373,6 +373,44 @@ document.addEventListener(
         musicPlayer.innerHTML = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="${url}&id=${musicId}"></iframe>`;
         document.body.appendChild(musicPlayer);
       });
+    });
+  },
+  false
+);
+
+// 首页
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    const header = document.querySelector("header");
+    const cardContainers = document.querySelectorAll('.cardContainerStyle');
+    const pos = document.getElementById("main").offsetTop - 70
+    const onTopSvg = document.querySelector("#onTop svg");
+    if (window.pageYOffset > pos || !header) {
+      cardContainers.forEach(element => {
+        element.style.opacity = 1;
+      });
+      onTopSvg.classList.remove("rotate");
+    }
+    if (!header) return;
+
+    var prevScrollPos = window.pageYOffset;
+    window.addEventListener('scroll', function(e) {
+      var currentScrollPos = window.pageYOffset;
+      if (prevScrollPos < currentScrollPos && currentScrollPos < pos) {
+        cardContainers.forEach(element => {
+          element.style.opacity = 1;
+        });
+        window.scrollTo({ top: pos, behavior: 'smooth'})
+        onTopSvg.classList.remove("rotate");
+      } else if (prevScrollPos > currentScrollPos && currentScrollPos < (pos / 2)) {
+        cardContainers.forEach(element => {
+          element.style.opacity = 0;
+        });
+        onTopSvg.classList.add("rotate");
+      }
+
+      prevScrollPos = currentScrollPos;
     });
   },
   false

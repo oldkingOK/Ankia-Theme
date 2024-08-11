@@ -28,6 +28,34 @@ code {
   font-family: "Ubuntu Mono" monospace;
 }
 
+#layout-header {
+  height: 100vh;
+}
+
+#layout-header #site-info {
+  position: absolute;
+  top: 43%;
+  width: 100%;
+}
+
+#layout-header #site-title {
+  margin: 0;
+  color: white;
+  font-size: 1.85em;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  line-height: 1.5;
+  position: relative;
+}
+
+#layout-header #site-subtitle {
+  color: rgb(213, 213, 213);
+  font-size: 1.15em;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  line-height: 1.5;
+}
+
 #layout {
   max-width: 100% !important;
   display: flex;
@@ -234,6 +262,10 @@ code {
 
 .hide {
   transform: translateY(-100%);
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
 .showMenu {
@@ -897,6 +929,8 @@ ul#toc {
   flex-direction: column;
   background: #ffffff00;
   cursor: pointer;
+  transition: opacity 0.5s ease;
+  opacity: 0;
 }
 
 .bloggerInfoTitleStyle {
@@ -967,6 +1001,7 @@ ul#toc {
 }
 
 .overlay {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -1095,6 +1130,10 @@ ul#toc {
   cursor: pointer;
   z-index: 2;
   align-items: center;
+}
+
+#onTop svg {
+  transition: transform 0.5s ease-in-out;
 }
 
 #onTop:hover {
