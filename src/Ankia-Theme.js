@@ -255,20 +255,6 @@ document.addEventListener(
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    const target = document.getElementById("onTop");
-    target.addEventListener("click", (e) => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  },
-  false
-);
-
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
     //字数统计
     const content = document.getElementById("content");
     if (!content) {
@@ -385,18 +371,32 @@ document.addEventListener(
     const header = document.querySelector("header");
     const cardContainers = document.querySelectorAll('.cardContainerStyle');
     const mainPos = document.getElementById("main").offsetTop - 70
+    const onTopElement = document.getElementById("onTop");
     const onTopSvg = document.querySelector("#onTop svg");
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToMain() {
+      window.scrollTo({ top: mainPos, behavior: 'smooth' });
+    }
+
     if (window.pageYOffset > mainPos || !header) {
       cardContainers.forEach(element => {
         element.style.opacity = 1;
       });
       onTopSvg.classList.remove("rotate");
+      onTopElement.addEventListener("click", scrollToTop);
     }
     if (!header) return;
+    onTopElement.addEventListener("click", scrollToMain);
 
     var prevScrollPos = window.pageYOffset;
     var canScroll = true;
     var startScroll = function(pos) {
+      if (!canScroll) {
+        return;
+      }
       canScroll = false;
       setTimeout(() => {
         canScroll = true;
@@ -409,20 +409,21 @@ document.addEventListener(
       let isScrollUp = prevScrollPos > currentScrollPos;
       prevScrollPos = currentScrollPos;
       
-      if (!canScroll) {
-        return;
-      };
       if (!isScrollUp && currentScrollPos < mainPos) {
         cardContainers.forEach(element => {
           element.style.opacity = 1;
         });
         onTopSvg.classList.remove("rotate");
         startScroll(mainPos);
+        onTopElement.removeEventListener("click", scrollToMain);
+        onTopElement.addEventListener("click", scrollToTop);
       } else if (isScrollUp && currentScrollPos < (mainPos / 2)) {
         cardContainers.forEach(element => {
           element.style.opacity = 0;
         });
         onTopSvg.classList.add("rotate");
+        onTopElement.removeEventListener("click", scrollToTop);
+        onTopElement.addEventListener("click", scrollToMain);
       }
     });
   },
