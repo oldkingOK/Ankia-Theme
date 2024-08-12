@@ -517,3 +517,60 @@ document.addEventListener(
   },
   false
 );
+
+/**
+ * 把 base64 当作拼音，然后用 Typed.js 实现打字效果
+ */
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    const header = document.querySelector("header");
+    if (!header) return;
+
+    // From https://stackoverflow.com/a/45844934
+    function b64encode(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+    /**
+     * 根据字符串，生成字符串序列
+     * 比如：“这辈子就是被 CTF 害了”
+     * 6L+Z
+     * 这6L6I
+     * 这辈5a2Q
+     * 这辈子5bCx
+     * ...
+     * @param {string} str 
+     * @returns 
+     */
+    function genStrs(str) {
+      var res = [];
+      for (var i = 0; i < str.length; i++) {
+        res.push(str.slice(0, i) + "<i><u>" + b64encode(str[i]) + "</u></i>");
+      }
+      res.push(str);
+      return res;
+    }
+    
+    var strs = genStrs('这辈子就是被 CTF 害了');
+    
+    var typed = new Typed('#subtitle', {
+      strings: strs,
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 0,
+      startDelay: 0,
+    });
+    var o_doneTyping = typed.doneTyping;
+    // 提供的接口不够实现功能，所以重写doneTyping方法
+    typed.doneTyping = function(curString, curStrPos) {
+      if (this.arrayPos != strs.length - 1) {
+        var newStr = typed.strings[this.arrayPos+1].slice(0, this.arrayPos + 1);
+        this.replaceText(newStr);
+        curString = newStr;
+        curStrPos = newStr.length;
+      }
+      o_doneTyping.apply(typed, [curString, curStrPos]);
+    }
+  },
+  false
+);
