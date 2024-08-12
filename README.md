@@ -6,6 +6,7 @@
 
 - [dvai/Ankia-Theme](https://github.com/dvai/Ankia-Theme)
 - [D-Sketon/hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
+- [jerryc127/hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
 
 ## 关于压缩
 
