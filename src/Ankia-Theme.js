@@ -384,9 +384,9 @@ document.addEventListener(
   () => {
     const header = document.querySelector("header");
     const cardContainers = document.querySelectorAll('.cardContainerStyle');
-    const pos = document.getElementById("main").offsetTop - 70
+    const mainPos = document.getElementById("main").offsetTop - 70
     const onTopSvg = document.querySelector("#onTop svg");
-    if (window.pageYOffset > pos || !header) {
+    if (window.pageYOffset > mainPos || !header) {
       cardContainers.forEach(element => {
         element.style.opacity = 1;
       });
@@ -395,22 +395,35 @@ document.addEventListener(
     if (!header) return;
 
     var prevScrollPos = window.pageYOffset;
+    var canScroll = true;
+    var startScroll = function(pos) {
+      canScroll = false;
+      setTimeout(() => {
+        canScroll = true;
+      }, 1000);
+      window.scrollTo({ top: pos, behavior: 'smooth'})
+    }
+
     window.addEventListener('scroll', function(e) {
       var currentScrollPos = window.pageYOffset;
-      if (prevScrollPos < currentScrollPos && currentScrollPos < pos) {
+      let isScrollUp = prevScrollPos > currentScrollPos;
+      prevScrollPos = currentScrollPos;
+      
+      if (!canScroll) {
+        return;
+      };
+      if (!isScrollUp && currentScrollPos < mainPos) {
         cardContainers.forEach(element => {
           element.style.opacity = 1;
         });
-        window.scrollTo({ top: pos, behavior: 'smooth'})
         onTopSvg.classList.remove("rotate");
-      } else if (prevScrollPos > currentScrollPos && currentScrollPos < (pos / 2)) {
+        startScroll(mainPos);
+      } else if (isScrollUp && currentScrollPos < (mainPos / 2)) {
         cardContainers.forEach(element => {
           element.style.opacity = 0;
         });
         onTopSvg.classList.add("rotate");
       }
-
-      prevScrollPos = currentScrollPos;
     });
   },
   false
