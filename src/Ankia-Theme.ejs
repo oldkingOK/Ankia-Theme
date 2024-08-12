@@ -95,7 +95,7 @@
 <body data-note-id="<%= note.noteId %>" data-ancestor-note-id="<%= subRoot.note.getVisibleChildNotes()[5].noteId %>">
   <div id="mobileMenuContainer"></div>
   <div id="globalBackground" style="">
-    <img id="globalBackgroundImg" src="api/images/<%= subRoot.note.getRelation("homepageBG").value %>/主页背景" style="position: fixed;margin-left: auto;margin-right: auto;display: flex;-o-object-fit: cover;object-fit: cover; overflow: visible" width="auto" height="100%">
+    <img id="globalBackgroundImg" src="api/images/<%= subRoot.note.getRelation("homepageBG").value %>/主页背景" width="auto" height="100%">
     <div class="overlay"></div>
     <canvas id="universe"></canvas>
   </div>

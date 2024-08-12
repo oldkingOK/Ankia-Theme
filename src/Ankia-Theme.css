@@ -11,6 +11,7 @@ body {
   margin: 0;
   height: 100%;
   min-height: 100vh;
+  background-color: black;
 }
 
 :root {
@@ -26,6 +27,17 @@ body {
 pre,
 code {
   font-family: "Ubuntu Mono" monospace;
+}
+
+#globalBackgroundImg {
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  -o-object-fit: cover;
+  object-fit: cover; 
+  overflow: visible;
+  animation: fadeIn 1s ease-in-out;
 }
 
 #layout-header {
@@ -579,6 +591,16 @@ h5:before {
 
   to {
     scale: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 
