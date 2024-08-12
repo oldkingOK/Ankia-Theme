@@ -8,6 +8,7 @@
 - [D-Sketon/hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
 - [jerryc127/hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
 - [mattboldt/typed.js](https://github.com/mattboldt/typed.js)
+- [zh-lx/pinyin-pro](https://github.com/zh-lx/pinyin-pro)
 
 ## 关于压缩
 

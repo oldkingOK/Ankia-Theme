@@ -527,27 +527,49 @@ document.addEventListener(
     const header = document.querySelector("header");
     if (!header) return;
 
-    // From https://stackoverflow.com/a/45844934
-    function b64encode(str) {
-      return btoa(unescape(encodeURIComponent(str)));
-    }
     /**
-     * 根据字符串，生成字符串序列
+     * 根据字符串，生成拼音序列
      * 比如：“这辈子就是被 CTF 害了”
-     * 6L+Z
-     * 这6L6I
-     * 这辈5a2Q
-     * 这辈子5bCx
+     * zhe
+     * 这bei
+     * 这辈zi
+     * 这辈子jiu
      * ...
      * @param {string} str 
      * @returns 
      */
     function genStrs(str) {
       var res = [];
-      for (var i = 0; i < str.length; i++) {
-        res.push(str.slice(0, i) + "<i><u>" + b64encode(str[i]) + "</u></i>");
+      var pinyin = pinyinPro.pinyin(str, { toneType: 'none' });
+
+      // 使用 pinyin-pro 处理出来的拼音，原字符串中的 " " 会变成连续的两个空字符
+      // 将其转换回空格
+      let arr = pinyin.split(" ");
+      let result = arr.reduce((acc, curr) => {
+        if (curr !== '') return [...acc, curr];
+        if (acc.length > 0 && acc[acc.length - 1] === ' ') return acc;
+        return [...acc, ' '];
+      }, []);
+      
+      // 处理字符串
+      // 将有拼音的字符的拼音加上下划线和斜体
+      // 没有拼音的字符就原样输出
+      for (let i = 0; ; i++) {
+        let buf = "";
+        
+        // 跳过没有拼音的字符
+        while (i < (str.length) && result[i] == str[i]) {
+          buf += str[i];
+          i++;
+        }
+        if (i < str.length) {
+          res.push(str.slice(0, i) + "<i><u>" + result[i] + "</u></i>");
+        } else {
+          res.push(str);
+          break;
+        }
       }
-      res.push(str);
+
       return res;
     }
     
@@ -563,13 +585,15 @@ document.addEventListener(
     var o_doneTyping = typed.doneTyping;
     // 提供的接口不够实现功能，所以重写doneTyping方法
     typed.doneTyping = function(curString, curStrPos) {
-      if (this.arrayPos != strs.length - 1) {
-        var newStr = typed.strings[this.arrayPos+1].slice(0, this.arrayPos + 1);
+      // 如果字符串以 ">" 结尾，说明是拼音，那就把对应的字替换上
+      // 注意：这里暂时使用 "<" 进行定位，可能会出现 bug
+      if (this.arrayPos != strs.length - 1 && curString.slice(-1) == ">") {
+        var newStr = this.strings[this.arrayPos+1].slice(0, curString.indexOf("<") + 1);
         this.replaceText(newStr);
         curString = newStr;
         curStrPos = newStr.length;
       }
-      o_doneTyping.apply(typed, [curString, curStrPos]);
+      o_doneTyping.apply(this, [curString, curStrPos]);
     }
   },
   false
