@@ -430,3 +430,76 @@ document.addEventListener(
   },
   false
 );
+
+/**
+ * 星空
+ * 被多次转发，已找不到源出处。
+ * https://blog.meta-code.top/2021/09/30/2021-7/
+ */
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    function universe() {
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      var windowWidth, windowHeight, starCount, context, speedFactor = .05,
+          canvasElement = document.getElementById("universe"),
+          initialState = !0,
+          giantColor = "180,184,240",
+          starColor = "226,225,142",
+          cometColor = "226,225,224",
+          starsArray = [];
+  
+      function setCanvasSize() {
+          windowWidth = window.innerWidth, windowHeight = window.innerHeight, starCount = .216 * windowWidth, canvasElement.setAttribute("width", windowWidth), canvasElement.setAttribute("height", windowHeight)
+      }
+  
+      function updateStars() {
+          context.clearRect(0, 0, windowWidth, windowHeight);
+          for (var t = starsArray.length, i = 0; i < t; i++) {
+              var s = starsArray[i];
+              s.move(), s.fadeIn(), s.fadeOut(), s.draw()
+          }
+      }
+  
+      function Star() {
+          this.reset = function () {
+              this.giant = isGiantOrComet(3), this.comet = !this.giant && !initialState && isGiantOrComet(10), this.x = randomInRange(0, windowWidth - 10), this.y = randomInRange(0, windowHeight), this.r = randomInRange(1.1, 2.6), this.dx = randomInRange(speedFactor, 6 * speedFactor) + (this.comet + 1 - 1) * speedFactor * randomInRange(50, 120) + 2 * speedFactor, this.dy = -randomInRange(speedFactor, 6 * speedFactor) - (this.comet + 1 - 1) * speedFactor * randomInRange(50, 120), this.fadingOut = null, this.fadingIn = !0, this.opacity = 0, this.opacityTresh = randomInRange(.2, 1 - .4 * (this.comet + 1 - 1)), this.do = randomInRange(5e-4, .002) + .001 * (this.comet + 1 - 1)
+          }, this.fadeIn = function () {
+              this.fadingIn && (this.fadingIn = !(this.opacity > this.opacityTresh), this.opacity += this.do)
+          }, this.fadeOut = function () {
+              this.fadingOut && (this.fadingOut = !(this.opacity < 0), this.opacity -= this.do / 2, (this.x > windowWidth || this.y < 0) && (this.fadingOut = !1, this.reset()))
+          }, this.draw = function () {
+              if (context.beginPath(), this.giant) context.fillStyle = "rgba(" + giantColor + "," + this.opacity + ")", context.arc(this.x, this.y, 2, 0, 2 * Math.PI, !1);
+              else if (this.comet) {
+                  context.fillStyle = "rgba(" + cometColor + "," + this.opacity + ")", context.arc(this.x, this.y, 1.5, 0, 2 * Math.PI, !1);
+                  for (var t = 0; t < 30; t++) context.fillStyle = "rgba(" + cometColor + "," + (this.opacity - this.opacity / 20 * t) + ")", context.rect(this.x - this.dx / 4 * t, this.y - this.dy / 4 * t - 2, 2, 2), context.fill()
+              } else context.fillStyle = "rgba(" + starColor + "," + this.opacity + ")", context.rect(this.x, this.y, this.r, this.r);
+              context.closePath(), context.fill()
+          }, this.move = function () {
+              this.x += this.dx, this.y += this.dy, !1 === this.fadingOut && this.reset(), (this.x > windowWidth - windowWidth / 4 || this.y < 0) && (this.fadingOut = !0)
+          }, setTimeout(function () {
+              initialState = !1
+          }, 50)
+      }
+  
+      function isGiantOrComet(t) {
+          return Math.floor(1e3 * Math.random()) + 1 < 10 * t
+      }
+  
+      function randomInRange(t, i) {
+          return Math.random() * (i - t) + t
+      }
+      setCanvasSize(), window.addEventListener("resize", setCanvasSize, !1),
+          function () {
+              context = canvasElement.getContext("2d");
+              for (var t = 0; t < starCount; t++) starsArray[t] = new Star, starsArray[t].reset();
+              updateStars()
+          }(),
+          function t() {
+              updateStars(), window.requestAnimationFrame(t)
+          }()
+    };
+    universe()
+  },
+  false
+);
