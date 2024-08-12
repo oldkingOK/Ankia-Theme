@@ -301,6 +301,10 @@ a {
     max-height: 250px !important;
   }
 
+  #globalBackgroundImg {
+    left: 40%;
+  }
+
   #onTop {
     right: 10px !important;
     width: 25px !important;
