@@ -370,7 +370,8 @@ document.addEventListener(
   () => {
     const header = document.querySelector("header");
     const cardContainers = document.querySelectorAll('.cardContainerStyle');
-    const mainPos = document.getElementById("main").offsetTop - 70
+    const mainEle = document.getElementById("main");
+    const mainPos = mainEle.offsetTop - parseInt(getComputedStyle(mainEle).marginTop);
     const onTopElement = document.getElementById("onTop");
     const onTopSvg = document.querySelector("#onTop svg");
 
@@ -381,7 +382,7 @@ document.addEventListener(
       window.scrollTo({ top: mainPos, behavior: 'smooth' });
     }
 
-    if (window.pageYOffset > mainPos || !header) {
+    if (window.pageYOffset >= mainPos || !header) {
       cardContainers.forEach(element => {
         element.style.opacity = 1;
       });

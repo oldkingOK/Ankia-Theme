@@ -373,8 +373,8 @@ a {
   }
 
   #main {
-    margin: 0px !important;
-    padding: 60px 30px 30px 30px !important;
+    margin: 60px 0 0 0 !important;
+    padding: 0px 30px 30px 30px !important;
     width: 80% !important;
   }
 
