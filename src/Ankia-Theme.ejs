@@ -175,13 +175,26 @@
   <% if (note.getLabelValue("categoryName") === "首页") { %>
   <header id="layout-header">
     <div id="site-info">
-      <h1 id="site-title">oldkingOK's Blog</h1>
+      <h1 id="site-title">
+        <% if (subRoot.note.hasLabel("siteTitle")) { %>
+          <%= subRoot.note.getLabelValue("siteTitle") %>
+        <% } else {%>
+          <%= siteName %>
+        <% } %>
+      </h1>
       <div id="site-subtitle">
+        <div id="subtitle-strings" style="display: none;">
+          <% if (subRoot.note.hasLabel("subtitles")) {
+            const subtitles = subRoot.note.getLabelValues("subtitles");
+            subtitles.forEach((subtitle)=>{ %>
+              <p><%= subtitle %></p>
+          <% })} else {%>
+            <p><%= siteDescription %></p>
+          <% } %>
+        </div>
         <span id="subtitle"></span>
-        <!-- <span class="typed-cursor" aria-hidden="true">|</span> -->
       </div>
     </div>
-    <!-- <div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div> -->
   </header>
   <% } %>
   <div id="layout">

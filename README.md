@@ -2,6 +2,13 @@
 
 基于原版的 Ankia-theme 进行了一些修改。
 
+## 新增可设置的功能
+
+需要在 *我的博客* 下新增标签：
+
+- 首页标题： #siteTitle="oldkingOK's Blog" #label:siteTitle="promoted,alias=首页标题,single,text"
+- 首页打字滚动副标题： #label:subtitles="promoted,alias=副标题,multi,text" #subtitles="副标题1" #subtitles="副标题2" #subtitles="副标题3"
+
 ## 感谢
 
 - [dvai/Ankia-Theme](https://github.com/dvai/Ankia-Theme)
