@@ -447,8 +447,7 @@ a {
     display: none;
   }
   .dropDownStyle {
-    left: 0;
-    width: 100vw;
+    left: inherit;
     align-items: center;
   }
 }
