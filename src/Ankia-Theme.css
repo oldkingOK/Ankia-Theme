@@ -214,6 +214,7 @@ code {
 
 .menuLinkStyle {
   color: #232627e0;
+  transition: all 0.3s ease;
 }
 
 .navigationItemsStyle {
