@@ -9,7 +9,7 @@
 - 首页标题： #siteTitle="oldkingOK's Blog" #label:siteTitle="promoted,alias=首页标题,single,text"
 - 首页打字滚动副标题： #label:subtitles="promoted,alias=副标题,multi,text" #subtitles="副标题1" #subtitles="副标题2" #subtitles="副标题3"
 
-## 感谢
+## 鸣谢
 
 - [dvai/Ankia-Theme](https://github.com/dvai/Ankia-Theme)
 - [D-Sketon/hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
@@ -26,7 +26,7 @@
 
 后续会考虑使用 Github Action 自动打包主题到 Release。
 
----
+# 以下为原始仓库作者信息
 
 ## Introduction
 Ankia-Theme is a blog theme based on the sharing feature of [Trilium](https://github.com/zadam/trilium), which can help you create a basic and aesthetically pleasing blog website.
