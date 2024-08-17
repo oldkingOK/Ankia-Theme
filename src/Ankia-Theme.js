@@ -531,88 +531,117 @@ document.addEventListener(
 
     // 每行字时间间隔（毫秒）
     const delay = 500;
-    // 小鹤双拼表
-    const xiaohe = {'a':'aa','ai':'ai','an':'an','ang':'ah','ao':'ao','chuo':'io','cuo':'co','duo':'do','e':'ee','ei':'ei','en':'en','eng':'eg','er':'er','guo':'go','huo':'ho','kuo':'ko','luo':'lo','nuo':'no','o':'oo','ruo':'ro','shuo':'uo','suo':'so','tuo':'to','zhuo':'vo','zuo':'zo','bang':'bh','beng':'bg','bian':'bm','biao':'bn','bing':'bk','bai':'bd','ban':'bj','bao':'bc','bei':'bw','ben':'bf','bie':'bp','bin':'bb','ba':'ba','bi':'bi','bo':'bo','bu':'bu','cang':'ch','ceng':'cg','cong':'cs','cuan':'cr','cai':'cd','can':'cj','cao':'cc','cen':'cf','cou':'cz','cun':'cy','ca':'ca','ce':'ce','ci':'ci','cu':'cu','cui':'cv','chuang':'il','chang':'ih','cheng':'ig','chong':'is','chuan':'ir','chai':'id','chan':'ij','chao':'ic','chen':'if','chou':'iz','chua':'ix','chun':'iy','cha':'ia','che':'ie','chi':'ii','chu':'iu','chuai':'ik','chui':'iv','dang':'dh','deng':'dg','dian':'dm','diao':'dn','ding':'dk','dong':'ds','duan':'dr','dai':'dd','dan':'dj','dao':'dc','dei':'dw','den':'df','die':'dp','diu':'dq','dou':'dz','dun':'dy','da':'da','de':'de','di':'di','du':'du','dui':'dv','fang':'fh','feng':'fg','fan':'fj','fei':'fw','fen':'ff','fou':'fz','fa':'fa','fo':'fo','fu':'fu','guang':'gl','gang':'gh','geng':'gg','gong':'gs','guan':'gr','gai':'gd','gan':'gj','gao':'gc','gei':'gw','gen':'gf','gou':'gz','gua':'gx','gun':'gy','ga':'ga','ge':'ge','gu':'gu','guai':'gk','gui':'gv','huang':'hl','hang':'hh','heng':'hg','hong':'hs','huan':'hr','hai':'hd','han':'hj','hao':'hc','hei':'hw','hen':'hf','hou':'hz','hua':'hx','hun':'hy','ha':'ha','he':'he','hu':'hu','huai':'hk','hui':'hv','jian':'jm','jiao':'jn','jing':'jk','juan':'jr','jie':'jp','jin':'jb','jiu':'jq','jun':'jy','ji':'ji','ju':'ju','jia':'jx','jiang':'jl','jiong':'js','jue':'jt','kuang':'kl','kang':'kh','keng':'kg','kong':'ks','kuan':'kr','kai':'kd','kan':'kj','kao':'kc','kei':'kw','ken':'kf','kou':'kz','kua':'kx','kun':'ky','ka':'ka','ke':'ke','ku':'ku','kuai':'kk','kui':'kv','lang':'lh','leng':'lg','lian':'lm','liao':'ln','ling':'lk','long':'ls','luan':'lr','lai':'ld','lan':'lj','lao':'lc','lei':'lw','lie':'lp','lin':'lb','liu':'lq','lou':'lz','lun':'ly','la':'la','le':'le','li':'li','lu':'lu','lv':'lv','liang':'ll','lue':'lt','mang':'mh','meng':'mg','mian':'mm','miao':'mn','ming':'mk','mai':'md','man':'mj','mao':'mc','mei':'mw','men':'mf','mie':'mp','min':'mb','miu':'mq','mou':'mz','ma':'ma','me':'me','mi':'mi','mo':'mo','mu':'mu','nang':'nh','neng':'ng','nian':'nm','niao':'nn','ning':'nk','nong':'ns','nuan':'nr','nai':'nd','nan':'nj','nao':'nc','nei':'nw','nen':'nf','nie':'np','nin':'nb','niu':'nq','nou':'nz','nun':'ny','na':'na','ne':'ne','ni':'ni','nu':'nu','nv':'nv','niang':'nl','nue':'nt','ou':'ou','pang':'ph','peng':'pg','pian':'pm','piao':'pn','ping':'pk','pai':'pd','pan':'pj','pao':'pc','pei':'pw','pen':'pf','pie':'pp','pin':'pb','pou':'pz','pa':'pa','pi':'pi','po':'po','pu':'pu','qian':'qm','qiao':'qn','qing':'qk','quan':'qr','qie':'qp','qin':'qb','qiu':'qq','qun':'qy','qi':'qi','qu':'qu','qia':'qx','qiang':'ql','qiong':'qs','que':'qt','rang':'rh','reng':'rg','rong':'rs','ruan':'rr','ran':'rj','rao':'rc','ren':'rf','rou':'rz','run':'ry','re':'re','ri':'ri','ru':'ru','rui':'rv','sang':'sh','seng':'sg','song':'ss','suan':'sr','sai':'sd','san':'sj','sao':'sc','sen':'sf','sou':'sz','sun':'sy','sa':'sa','se':'se','si':'si','su':'su','sui':'sv','shuang':'ul','shang':'uh','sheng':'ug','shuan':'ur','shai':'ud','shan':'uj','shao':'uc','shei':'uw','shen':'uf','shou':'uz','shua':'ux','shun':'uy','sha':'ua','she':'ue','shi':'ui','shu':'uu','shui':'uv','shuai':'uk','tang':'th','teng':'tg','tian':'tm','tiao':'tn','ting':'tk','tong':'ts','tuan':'tr','tai':'td','tan':'tj','tao':'tc','tei':'tw','tie':'tp','tou':'tz','tun':'ty','ta':'ta','te':'te','ti':'ti','tu':'tu','tui':'tv','wang':'wh','weng':'wg','wai':'wd','wan':'wj','wei':'ww','wen':'wf','wa':'wa','wo':'wo','wu':'wu','xian':'xm','xiao':'xn','xing':'xk','xuan':'xr','xie':'xp','xin':'xb','xiu':'xq','xun':'xy','xi':'xi','xu':'xu','xiong':'xs','xiang':'xl','xia':'xx','xue':'xt','yang':'yh','ying':'yk','yong':'ys','yuan':'yr','yan':'yj','yao':'yc','yin':'yb','you':'yz','yun':'yy','ya':'ya','ye':'ye','yi':'yi','yo':'yo','yu':'yu','yue':'yt','zang':'zh','zeng':'zg','zong':'zs','zuan':'zr','zai':'zd','zan':'zj','zao':'zc','zei':'zw','zen':'zf','zou':'zz','zun':'zy','za':'za','ze':'ze','zi':'zi','zu':'zu','zui':'zv','zhuang':'vl','zhang':'vh','zheng':'vg','zhong':'vs','zhuan':'vr','zhai':'vd','zhan':'vj','zhao':'vc','zhei':'vw','zhen':'vf','zhou':'vz','zhua':'vx','zhun':'vy','zha':'va','zhe':'ve','zhi':'vi','zhu':'vu','zhuai':'vk','zhui':'vv','yv':'yv','lia':'lx','dia':'dx'}
     var raw = [];
     for (let p of document.getElementById("subtitle-strings").children) {
         raw.push(p.textContent);
     }
 
+    // 小鹤双拼表
+    const xiaohe = {'a':'aa','ai':'ai','an':'an','ang':'ah','ao':'ao','chuo':'io','cuo':'co','duo':'do','e':'ee','ei':'ei','en':'en','eng':'eg','er':'er','guo':'go','huo':'ho','kuo':'ko','luo':'lo','nuo':'no','o':'oo','ruo':'ro','shuo':'uo','suo':'so','tuo':'to','zhuo':'vo','zuo':'zo','bang':'bh','beng':'bg','bian':'bm','biao':'bn','bing':'bk','bai':'bd','ban':'bj','bao':'bc','bei':'bw','ben':'bf','bie':'bp','bin':'bb','ba':'ba','bi':'bi','bo':'bo','bu':'bu','cang':'ch','ceng':'cg','cong':'cs','cuan':'cr','cai':'cd','can':'cj','cao':'cc','cen':'cf','cou':'cz','cun':'cy','ca':'ca','ce':'ce','ci':'ci','cu':'cu','cui':'cv','chuang':'il','chang':'ih','cheng':'ig','chong':'is','chuan':'ir','chai':'id','chan':'ij','chao':'ic','chen':'if','chou':'iz','chua':'ix','chun':'iy','cha':'ia','che':'ie','chi':'ii','chu':'iu','chuai':'ik','chui':'iv','dang':'dh','deng':'dg','dian':'dm','diao':'dn','ding':'dk','dong':'ds','duan':'dr','dai':'dd','dan':'dj','dao':'dc','dei':'dw','den':'df','die':'dp','diu':'dq','dou':'dz','dun':'dy','da':'da','de':'de','di':'di','du':'du','dui':'dv','fang':'fh','feng':'fg','fan':'fj','fei':'fw','fen':'ff','fou':'fz','fa':'fa','fo':'fo','fu':'fu','guang':'gl','gang':'gh','geng':'gg','gong':'gs','guan':'gr','gai':'gd','gan':'gj','gao':'gc','gei':'gw','gen':'gf','gou':'gz','gua':'gx','gun':'gy','ga':'ga','ge':'ge','gu':'gu','guai':'gk','gui':'gv','huang':'hl','hang':'hh','heng':'hg','hong':'hs','huan':'hr','hai':'hd','han':'hj','hao':'hc','hei':'hw','hen':'hf','hou':'hz','hua':'hx','hun':'hy','ha':'ha','he':'he','hu':'hu','huai':'hk','hui':'hv','jian':'jm','jiao':'jn','jing':'jk','juan':'jr','jie':'jp','jin':'jb','jiu':'jq','jun':'jy','ji':'ji','ju':'ju','jia':'jx','jiang':'jl','jiong':'js','jue':'jt','kuang':'kl','kang':'kh','keng':'kg','kong':'ks','kuan':'kr','kai':'kd','kan':'kj','kao':'kc','kei':'kw','ken':'kf','kou':'kz','kua':'kx','kun':'ky','ka':'ka','ke':'ke','ku':'ku','kuai':'kk','kui':'kv','lang':'lh','leng':'lg','lian':'lm','liao':'ln','ling':'lk','long':'ls','luan':'lr','lai':'ld','lan':'lj','lao':'lc','lei':'lw','lie':'lp','lin':'lb','liu':'lq','lou':'lz','lun':'ly','la':'la','le':'le','li':'li','lu':'lu','lv':'lv','liang':'ll','lue':'lt','mang':'mh','meng':'mg','mian':'mm','miao':'mn','ming':'mk','mai':'md','man':'mj','mao':'mc','mei':'mw','men':'mf','mie':'mp','min':'mb','miu':'mq','mou':'mz','ma':'ma','me':'me','mi':'mi','mo':'mo','mu':'mu','nang':'nh','neng':'ng','nian':'nm','niao':'nn','ning':'nk','nong':'ns','nuan':'nr','nai':'nd','nan':'nj','nao':'nc','nei':'nw','nen':'nf','nie':'np','nin':'nb','niu':'nq','nou':'nz','nun':'ny','na':'na','ne':'ne','ni':'ni','nu':'nu','nv':'nv','niang':'nl','nue':'nt','ou':'ou','pang':'ph','peng':'pg','pian':'pm','piao':'pn','ping':'pk','pai':'pd','pan':'pj','pao':'pc','pei':'pw','pen':'pf','pie':'pp','pin':'pb','pou':'pz','pa':'pa','pi':'pi','po':'po','pu':'pu','qian':'qm','qiao':'qn','qing':'qk','quan':'qr','qie':'qp','qin':'qb','qiu':'qq','qun':'qy','qi':'qi','qu':'qu','qia':'qx','qiang':'ql','qiong':'qs','que':'qt','rang':'rh','reng':'rg','rong':'rs','ruan':'rr','ran':'rj','rao':'rc','ren':'rf','rou':'rz','run':'ry','re':'re','ri':'ri','ru':'ru','rui':'rv','sang':'sh','seng':'sg','song':'ss','suan':'sr','sai':'sd','san':'sj','sao':'sc','sen':'sf','sou':'sz','sun':'sy','sa':'sa','se':'se','si':'si','su':'su','sui':'sv','shuang':'ul','shang':'uh','sheng':'ug','shuan':'ur','shai':'ud','shan':'uj','shao':'uc','shei':'uw','shen':'uf','shou':'uz','shua':'ux','shun':'uy','sha':'ua','she':'ue','shi':'ui','shu':'uu','shui':'uv','shuai':'uk','tang':'th','teng':'tg','tian':'tm','tiao':'tn','ting':'tk','tong':'ts','tuan':'tr','tai':'td','tan':'tj','tao':'tc','tei':'tw','tie':'tp','tou':'tz','tun':'ty','ta':'ta','te':'te','ti':'ti','tu':'tu','tui':'tv','wang':'wh','weng':'wg','wai':'wd','wan':'wj','wei':'ww','wen':'wf','wa':'wa','wo':'wo','wu':'wu','xian':'xm','xiao':'xn','xing':'xk','xuan':'xr','xie':'xp','xin':'xb','xiu':'xq','xun':'xy','xi':'xi','xu':'xu','xiong':'xs','xiang':'xl','xia':'xx','xue':'xt','yang':'yh','ying':'yk','yong':'ys','yuan':'yr','yan':'yj','yao':'yc','yin':'yb','you':'yz','yun':'yy','ya':'ya','ye':'ye','yi':'yi','yo':'yo','yu':'yu','yue':'yt','zang':'zh','zeng':'zg','zong':'zs','zuan':'zr','zai':'zd','zan':'zj','zao':'zc','zei':'zw','zen':'zf','zou':'zz','zun':'zy','za':'za','ze':'ze','zi':'zi','zu':'zu','zui':'zv','zhuang':'vl','zhang':'vh','zheng':'vg','zhong':'vs','zhuan':'vr','zhai':'vd','zhan':'vj','zhao':'vc','zhei':'vw','zhen':'vf','zhou':'vz','zhua':'vx','zhun':'vy','zha':'va','zhe':'ve','zhi':'vi','zhu':'vu','zhuai':'vk','zhui':'vv','yv':'yv','lia':'lx','dia':'dx'}
+    /**
+     * 把拼音转换成小鹤双拼
+     * @param {string} pinyin 单个拼音
+     * @returns 
+     */
+    function getXiaohe(pinyin) {
+      if (xiaohe[pinyin]) {
+        return xiaohe[pinyin];
+      } else {
+        return pinyin;
+      }
+    }
+
     /**
      * 根据字符串，生成拼音序列
      * 比如：“这辈子就是被 CTF 害了”
-     * zhe
-     * 这bei
-     * 这辈zi
-     * 这辈子jiu
+     * 这        zhe
+     * 这辈      这bei
+     * 这辈子    这辈zi
+     * 这辈子就  这辈子jiu
      * ...
-     * @param {string} str 
+     * @param {string} pinyinArray 翻译之后的拼音数组
      * @returns list of strings
      */
-    function genStrs(str) {
-      var res = [];
-      var pinyin = pinyinPro.pinyin(str, { toneType: 'none' });
-
-      // 使用 pinyin-pro 处理出来的拼音，原字符串中的 " " 会变成连续的两个空字符
-      // 将其转换回空格
-      let arr = pinyin.split(" ");
-      let result = arr.reduce((acc, curr) => {
-        if (curr !== '') return [...acc, curr];
-        if (acc.length > 0 && acc[acc.length - 1] === ' ') return acc;
-        return [...acc, ' '];
-      }, []);
-      
-      // 处理字符串
-      // 将有拼音的字符的拼音加上下划线和斜体
-      // 没有拼音的字符就原样输出
-      for (let i = 0; ; i++) {
-        let buf = "";
+    function genStrs(pinyinArray) {
+      var origin = [""];
+      var pinyin = [""];
+      for (let i = 0; i < pinyinArray.length; i++) {
+        // 对于未翻译的，直接拼接
+        if (pinyinArray[i][0].origin == pinyinArray[i][0].result) {
+          origin[origin.length - 1] += pinyinArray[i][0].origin;
+          pinyin[pinyin.length - 1] += pinyinArray[i][0].origin;
+          continue;
+        }
+  
+        // 拼音
+        pinyin[pinyin.length - 1] += "<i><u>";
+        for (let j = 0; j < pinyinArray[i].length; j++) {
+          origin[origin.length - 1] += pinyinArray[i][j].origin;
+          pinyin[pinyin.length - 1] += getXiaohe(pinyinArray[i][j].result);
+        }
+        pinyin[pinyin.length - 1] += "</u></i>";
         
-        // 跳过没有拼音的字符
-        while (i < (str.length) && result[i] == str[i]) {
-          buf += str[i];
-          i++;
-        }
-        if (i < str.length) {
-          res.push(str.slice(0, i) + "<i><u>" + (xiaohe[result[i]] ? xiaohe[result[i]] : result[i]) + "</u></i>");
-        } else {
-          res.push(str);
-          break;
-        }
+        // 手动添加新行
+        origin.push(origin[origin.length - 1]);
+        pinyin.push(origin[pinyin.length - 1]);
       }
-
-      return res;
+  
+      return {
+        origin: origin,
+        pinyin: pinyin,
+      };
     }
 
-    var strs = [];
-    for (let i = 0; i < raw.length; i++) {
-      strs = strs.concat(genStrs(raw[i]));
-      strs.push(strs.at(-1) + "^" + delay);
-    }
-    
-    var typed = new Typed('#subtitle', {
-      strings: strs,
-      typeSpeed: 70,
-      backSpeed: 40,
-      backDelay: 0,
-      startDelay: 400, // 进首页之后的延迟
-      loop: true,
+    // 这是一个使用 vercel 搭建的简单后端，用于获取拼音
+    // https://github.com/oldkingOK/pinyin-server
+    $.ajax({
+      url: 'https://pinyin.oldkingok.cc/',
+      type: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify({
+          raw: raw
+      }),
+      success: function(response) {
+          let pinyin = response.pinyin;
+          var origins = [];
+          var strs = [];
+          for (let i = 0; i < pinyin.length; i++) {
+            let result = genStrs(pinyin[i]);
+            origins = origins.concat(result.origin);
+            strs = strs.concat(result.pinyin);
+
+            strs.push(origins.at(-1) + "^" + delay);
+            origins.push("");
+          }
+
+          var typed = new Typed('#subtitle', {
+            strings: strs,
+            typeSpeed: 70,
+            backSpeed: 40,
+            backDelay: 0,
+            startDelay: 400, // 进首页之后的延迟
+            loop: true,
+          });
+      
+          // Typed.js 提供了 onStringTyped 接口触发于每行字打印结束
+          // 但是并不能直接修改字符串，所以只能修改触发 onStringTyped 的 doneTyping
+          var o_doneTyping = typed.doneTyping;
+          typed.doneTyping = function(curString, curStrPos) {
+            // 如果字符串以 ">" 结尾，说明是拼音，那就把对应的字替换上
+            // 注意：这里暂时使用 "<" 进行定位，可能会出现 bug
+            if (curString.slice(-1) == ">") {
+              var newStr = origins[this.arrayPos];
+              this.replaceText(newStr);
+              curString = newStr;
+              curStrPos = newStr.length;
+            }
+            o_doneTyping.apply(this, [curString, curStrPos]);
+          }
+      },
+      error: function(xhr, status, error) {
+          console.error('Error:', error);
+      }
     });
-
-    // Typed.js 提供了 onStringTyped 接口触发于每行字打印结束
-    // 但是并不能直接修改字符串，所以只能修改触发 onStringTyped 的 doneTyping
-    var o_doneTyping = typed.doneTyping;
-    typed.doneTyping = function(curString, curStrPos) {
-      // 如果字符串以 ">" 结尾，说明是拼音，那就把对应的字替换上
-      // 注意：这里暂时使用 "<" 进行定位，可能会出现 bug
-      if (this.arrayPos != strs.length - 1 && curString.slice(-1) == ">") {
-        var newStr = this.strings[this.arrayPos+1].slice(0, curString.indexOf("<") + 1);
-        this.replaceText(newStr);
-        curString = newStr;
-        curStrPos = newStr.length;
-      }
-      o_doneTyping.apply(this, [curString, curStrPos]);
-    }
   },
   false
 );
