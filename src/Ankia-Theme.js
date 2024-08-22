@@ -371,7 +371,7 @@ document.addEventListener(
     const header = document.querySelector("header");
     const cardContainers = document.querySelectorAll('.cardContainerStyle');
     const mainEle = document.getElementById("main");
-    const mainPos = mainEle.offsetTop - parseInt(getComputedStyle(mainEle).marginTop);
+    var mainPos = mainEle.offsetTop - parseInt(getComputedStyle(mainEle).marginTop);
     const onTopElement = document.getElementById("onTop");
     const onTopSvg = document.querySelector("#onTop svg");
 
@@ -379,6 +379,7 @@ document.addEventListener(
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     function scrollToMain() {
+      mainPos = mainEle.offsetTop - parseInt(getComputedStyle(mainEle).marginTop);
       window.scrollTo({ top: mainPos, behavior: 'smooth' });
     }
 
@@ -406,6 +407,7 @@ document.addEventListener(
     }
 
     window.addEventListener('scroll', function(e) {
+      mainPos = mainEle.offsetTop - parseInt(getComputedStyle(mainEle).marginTop);
       var currentScrollPos = window.pageYOffset;
       let isScrollUp = prevScrollPos > currentScrollPos;
       prevScrollPos = currentScrollPos;
