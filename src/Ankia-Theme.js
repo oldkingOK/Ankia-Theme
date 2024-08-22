@@ -645,3 +645,12 @@ document.addEventListener(
   },
   false
 );
+
+// 图片点击放大
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    Fancybox.bind('#content img', {});
+  },
+  false
+);

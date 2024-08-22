@@ -16,6 +16,7 @@
 - [jerryc127/hexo-theme-butterfly](https://github.com/jerryc127/hexo-theme-butterfly)
 - [mattboldt/typed.js](https://github.com/mattboldt/typed.js)
 - [zh-lx/pinyin-pro](https://github.com/zh-lx/pinyin-pro)
+- [fancyapps/ui](https://github.com/fancyapps/ui)
 
 ## 关于压缩
 

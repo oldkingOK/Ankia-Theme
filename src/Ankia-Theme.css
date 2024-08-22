@@ -468,6 +468,7 @@ a {
   max-height: 30rem;
   width: auto;
   border-radius: 5px;
+  cursor: zoom-in;
 }
 
 img {
