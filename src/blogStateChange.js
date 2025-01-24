@@ -53,10 +53,9 @@ if (publishStatus === "false") {
 note.save();
 
 function extractTextFromHTML(html) {
-    var text = html.replace(/<[^>]*>/g, '');
+    var text = html.split("</p>")[0];
+    text = text.replace(/<[^>]*>/g, '');
     text = text.replace(/\s+/g, '');
 
-    var extractedText = text.substring(0, 120);
-
-    return `${extractedText}...`;
+    return text;
 }
