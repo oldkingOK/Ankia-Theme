@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OK</title>
+        <% if (note.hasRelation("shareFavicon")) { %>
+            <link rel="shortcut icon" href="api/notes/<%= note.getRelation("shareFavicon").value %>/download">
+        <% } else { %>
+            <link rel="shortcut icon" href="../favicon.ico">
+        <% } %>
+        <style>
+            body {
+                height: 80vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 2em;
+                text-align: center;
+            }
+
+            .foo-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .foo-container a {
+                margin: 0 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <% if (note.getLabelValue("categoryName") === "首页") { %>
+            <h1>oldkingOK</h1>
+            <div class="foo-container">
+                <a href="./blog">博客</a>
+                •
+                <a href="./db">知识库</a>
+                •
+                <a href="./friend">友链</a>
+            </div>
+        <% } %>
+    </body>
+</html>
