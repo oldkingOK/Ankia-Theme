@@ -11,31 +11,36 @@
         <% } %>
         <style>
             body {
-                height: 80vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                font-size: 2em;
-                text-align: center;
-            }
-
-            .foo-container {
-                display: flex;
-                justify-content: center;
-                margin-top: 20px;
-            }
-
-            .foo-container a {
-                margin: 0 10px;
+                font-family: monospace;
             }
         </style>
     </head>
     <body>
         <% switch (note.getLabelValue("categoryName")) {
             case "首页": %>
+
+            <style>
+                body {
+                    height: 80vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 2em;
+                    text-align: center;
+                }
+
+                .subtitles {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
+
+                .subtitles a {
+                    margin: 0 10px;
+                }
+            </style>
             <h1>oldkingOK</h1>
-            <div class="foo-container">
+            <div class="subtitles">
                 <a href="./blog">博客</a>
                 •
                 <a href="./db">知识库</a>
@@ -45,7 +50,47 @@
 
         <% break;
             case "博客": %>
-            <h1>博客</h1>
+            <style>
+                body {
+                    font-size: 16px;
+                    text-align: center;
+                    margin: 0 20px 0 20px;
+                }
+
+                .root {
+                    display: inline-grid;
+                }
+
+                .child {
+                    border: 2px solid black;
+                    background-color: #f0f0f0;
+                    width: 100%;
+                    text-align: left;
+                }
+                
+                h2, p {
+                    margin: 10px 20px 10px 20px;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+            </style>
+            <div class="root">
+            <center><h1>博客</h1></center>
+            <% const childNotes = note.getVisibleChildNotes();
+                for (const childNote of childNotes) { %>
+                    <div class="child">
+                        <a href="./<%= childNote.shareId %>">
+                            <h2><%= childNote.title %></h2>
+                        </a>
+                        <% if (childNote.hasLabel("summary") && childNote.getLabelValue("summary")!=null) { %>
+                            <p><%= childNote.getLabelValue("summary") %></p>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
 
         <% break;
             case "知识库": %>
@@ -53,6 +98,33 @@
 
         <% break;
             default: %>
+            <style>
+                body {
+                    font-size: 16px;
+                    text-align: center;
+                    margin: 0 20px 0 20px;
+                }
+
+                .contents {
+                    display: inline-grid;
+                    text-align: left;
+                    border: 2px solid black;
+                    background-color: #f0f0f0;
+                    padding: 0 20px 0 20px;
+                    max-width: min-content;
+                }
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+            </style>
+
+            <h1 style="align-self: center;"><%= note.title %></h1>
+            <div class="contents">
+                <%- content %>
+            </div>
 
         <% break;} %>
     </body>
