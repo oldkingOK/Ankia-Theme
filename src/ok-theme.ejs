@@ -54,17 +54,19 @@
                 body {
                     font-size: 16px;
                     text-align: center;
-                    margin: 0 20px 0 20px;
                 }
 
                 .root {
-                    display: inline-grid;
+                    position: relative;
+                    transform: translateX(-50%);
+                    left: 50%;
+                    margin: 10px 0px;
+                    max-width: max-content;
                 }
 
                 .child {
                     border: 2px solid black;
                     background-color: #f0f0f0;
-                    width: 100%;
                     text-align: left;
                 }
                 
@@ -76,9 +78,11 @@
                     text-decoration: none;
                 }
 
+
             </style>
+
             <div class="root">
-            <center><h1>博客</h1></center>
+            <center><h1 style="margin: 0;margin-bottom: 10px;">博客</h1></center>
             <% const childNotes = note.getVisibleChildNotes();
                 for (const childNote of childNotes) { %>
                     <div class="child">
@@ -98,25 +102,33 @@
 
         <% break;
             default: %>
+
             <style>
                 body {
                     font-size: 16px;
                     text-align: center;
-                    margin: 0 20px 0 20px;
+                    padding: 0 20px;
                 }
 
                 .contents {
-                    display: inline-grid;
                     text-align: left;
                     border: 2px solid black;
                     background-color: #f0f0f0;
-                    padding: 0 20px 0 20px;
-                    max-width: min-content;
+                    padding: 0 20px;
+                    max-width: max-content;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
                 }
 
                 img {
                     width: 100%;
+                    min-width: 42vh;
                     height: auto;
+                }
+
+                pre {
+                    white-space: break-spaces
                 }
 
             </style>
