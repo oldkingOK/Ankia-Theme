@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OK</title>
+        <% if (note.hasRelation("shareFavicon")) { %>
+            <link rel="shortcut icon" href="api/notes/<%= note.getRelation("shareFavicon").value %>/download">
+        <% } else { %>
+            <link rel="shortcut icon" href="../favicon.ico">
+        <% } %>
+        <style>
+            body {
+                font-family: monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <% switch (note.getLabelValue("categoryName")) {
+            case "首页": %>
+
+            <style>
+                body {
+                    height: 80vh;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 2em;
+                    text-align: center;
+                }
+
+                .subtitles {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 20px;
+                }
+
+                .subtitles a {
+                    margin: 0 10px;
+                }
+            </style>
+            <h1>oldkingOK</h1>
+            <div class="subtitles">
+                <a href="./blog">博客</a>
+                •
+                <a href="./db">知识库</a>
+                •
+                <a href="./fLinks">友链</a>
+            </div>
+
+        <% break;
+            case "博客": %>
+            <style>
+                body {
+                    font-size: 16px;
+                    text-align: center;
+                }
+
+                .root {
+                    position: relative;
+                    transform: translateX(-50%);
+                    left: 50%;
+                    margin: 10px 0px;
+                    max-width: max-content;
+                }
+
+                .child {
+                    border: 2px solid black;
+                    background-color: #f0f0f0;
+                    text-align: left;
+                }
+                
+                h2, p {
+                    margin: 10px 20px 10px 20px;
+                }
+
+                a {
+                    text-decoration: none;
+                }
+
+
+            </style>
+
+            <div class="root">
+            <center><h1 style="margin: 0;margin-bottom: 10px;">博客</h1></center>
+            <% const childNotes = note.getVisibleChildNotes();
+                for (const childNote of childNotes) { %>
+                    <div class="child">
+                        <a href="./<%= childNote.shareId %>">
+                            <h2><%= childNote.title %></h2>
+                        </a>
+                        <% if (childNote.hasLabel("summary") && childNote.getLabelValue("summary")!=null) { %>
+                            <p><%= childNote.getLabelValue("summary") %></p>
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+
+        <% break;
+            case "友链": %>
+            <style>
+                img {
+                    width: 100%;
+                }
+
+                a {
+                    display: block;
+                    border: 2px solid black;
+                    background-color: #f0f0f0;
+                    margin: 5px;
+                    width: 140px;
+                    text-decoration: none;
+                }
+
+                .fLinks {
+                    display: flex;
+                    position: relative;
+                    max-width: fit-content;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-align: center;
+                    margin: 5px;
+                    flex-wrap: wrap;
+                }
+
+                
+            </style>
+            <center><h1 style="margin: 0;margin-bottom: 10px;">友链</h1></center>
+            <div class="fLinks">
+                <% const fLnksDate = content.replace(/<\/?pre>/g, '').replace(/[\n]/g, "");
+                    const fLinks = JSON.parse(fLnksDate); 
+                    for (let key in fLinks) {%>
+                    <a class="fLink" href="<%= fLinks[key]['link'] %>" target="_blank" rel="noopener">
+                        <img src="<%= fLinks[key]['img'] %>" alt="<%= fLinks[key]['title'] %>">
+                        <div><%= fLinks[key]['title'] %></div>
+                        <div><%= fLinks[key]['des'] %></div>
+                    </a>
+                <% }%>
+            </div>
+
+
+        <% break;
+            default: %>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+            <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.9.0/dist/highlightjs-line-numbers.min.js"></script>
+            <style>
+                body {
+                    font-size: 16px;
+                    text-align: center;
+                    padding: 0 20px;
+                }
+
+                .contents {
+                    text-align: left;
+                    border: 2px solid black;
+                    background-color: #f0f0f0;
+                    padding: 0 20px;
+                    max-width: max-content;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+
+                img {
+                    width: 100%;
+                    min-width: 42vh;
+                    height: auto;
+                }
+
+                pre {
+                    border: 2px solid black;
+                    white-space: break-spaces;
+                }
+
+                .hljs-ln td {
+                    padding-left: 10px;
+                    vertical-align: top;
+                }
+
+                .hljs {
+                    background: #fff;
+                    color: #000;
+                }
+            </style>
+
+            <h1 style="align-self: center;"><%= note.title %></h1>
+            <div class="contents">
+                <%- content %>
+            </div>
+            <script>
+                hljs.registerAliases("text-x-sh", {languageName: "shell"});
+                // Handle language highlighting
+                for (lang of hljs.listLanguages())
+                    hljs.registerAliases("text-x-"+lang, {languageName: lang});
+                others = {'x-sh': 'shell', 'text-plain': 'plaintext'}
+                for (key in others)
+                    hljs.registerAliases(key, {languageName: others[key]})
+
+                hljs.highlightAll()
+                hljs.initLineNumbersOnLoad();
+            </script>
+
+        <% break;} %>
+    </body>
+</html>
