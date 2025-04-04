@@ -92,7 +92,15 @@
                         <% if (childNote.hasLabel("summary") && childNote.getLabelValue("summary")!=null) { %>
                             <p><%= childNote.getLabelValue("summary") %></p>
                         <% } %>
-                        <p><%= childNote.getLabelValue("date").split("T")[0] %></p>
+                        <p>
+                        <%= childNote.getLabelValue("date").split("T")[0] %>
+                        tags:
+                        <% const tags = childNote.getLabelValues("tags");
+                                        if (tags!=null ||tags!=undefined ||tags!=""){
+                                            tags.forEach((tag)=>{ %>
+                                <%= tag  %>
+                        <%})} %>
+                        </p>
                     </div>
                 <% } %>
             </div>
