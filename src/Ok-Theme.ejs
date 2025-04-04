@@ -92,6 +92,7 @@
                         <% if (childNote.hasLabel("summary") && childNote.getLabelValue("summary")!=null) { %>
                             <p><%= childNote.getLabelValue("summary") %></p>
                         <% } %>
+                        <p><%= childNote.getLabelValue("date").split("T")[0] %></p>
                     </div>
                 <% } %>
             </div>
