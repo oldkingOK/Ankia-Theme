@@ -170,8 +170,10 @@
         <% break;
             default: %>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.css">
             <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
             <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.9.0/dist/highlightjs-line-numbers.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.js"></script>
             <style>
                 body {
                     font-size: 16px;
@@ -288,6 +290,11 @@
                         pre.appendChild(toggleBottom);                  // 插到最后
                     }
                 }
+            </script>
+            <script>
+                document.querySelectorAll('img').forEach(img => {
+                    const viewer = new Viewer(img, { inline: false })
+                });
             </script>
 
         <% break;} %>
