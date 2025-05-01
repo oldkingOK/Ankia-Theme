@@ -172,10 +172,12 @@
             default: %>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.css">
             <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
             <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.9.0/dist/highlightjs-line-numbers.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.38/dist/twikoo.all.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.32.2/tocbot.min.js"></script>
             <style>
                 body {
                     font-size: 16px;
@@ -235,10 +237,15 @@
                     cursor: pointer;
                     font-size: 14px;
                 }
+
+                .toc {
+                    margin-top: 20px;
+                }
             </style>
 
             <h1 style="align-self: center;"><%= note.title %></h1>
             <div class="contents">
+                <div class="toc"></div>
                 <%- content %>
                 <div id="tcomment"></div>
             </div>
@@ -295,15 +302,33 @@
                 }
             </script>
             <script>
+                // misc
                 document.querySelectorAll('img').forEach(img => {
                     const viewer = new Viewer(img, { inline: false })
                 });
-            </script>
-            <script>
+
                 twikoo.init({
                     envId: "<%= subRoot.note.getLabelValue("envId") %>",
                     el: '#tcomment',
                 })
+
+                document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(h => {
+                    h.id = h.textContent;
+                });
+
+                tocbot.init({
+                    tocSelector: '.toc',
+                    contentSelector: '.contents',
+                    headingSelector: 'h1, h2, h3, h4, h5, h6',
+                    scrollSmooth: false,
+                    collapseDepth: 3,
+                    orderedList: false,
+                    fixedSidebarOffset: 100,
+                    fixedSidebar: true,
+                    isCollapsed: false,
+                    headingsOffset: 0,
+                    headingsOffsetTarget: '.contents',
+                });
             </script>
 
         <% break;} %>
