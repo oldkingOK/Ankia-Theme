@@ -14,6 +14,7 @@
                 font-family: monospace;
             }
         </style>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     </head>
     <body>
         <% switch (note.getLabelValue("categoryName")) {
@@ -174,6 +175,7 @@
             <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
             <script src="//cdn.jsdelivr.net/npm/highlightjs-line-numbers.js@2.9.0/dist/highlightjs-line-numbers.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.7/viewer.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/twikoo@1.6.38/dist/twikoo.all.min.js"></script>
             <style>
                 body {
                     font-size: 16px;
@@ -238,6 +240,7 @@
             <h1 style="align-self: center;"><%= note.title %></h1>
             <div class="contents">
                 <%- content %>
+                <div id="tcomment"></div>
             </div>
             <script>
                 hljs.registerAliases("text-x-sh", {languageName: "shell"});
@@ -296,7 +299,17 @@
                     const viewer = new Viewer(img, { inline: false })
                 });
             </script>
+            <script>
+                twikoo.init({
+                    envId: "<%= subRoot.note.getLabelValue("envId") %>",
+                    el: '#tcomment',
+                })
+            </script>
 
         <% break;} %>
+        <div>
+            <span>运行时间 <%= Math.ceil((new Date() - new Date(subRoot.note.getLabelValue("blogStartTime"))) / (24 * 60 * 60 * 1000)) %> 天</span>
+            <span id="busuanzi_container_site_pv">| 总访问量 <span id="busuanzi_value_site_pv"></span></span>
+        </div>
     </body>
 </html>
