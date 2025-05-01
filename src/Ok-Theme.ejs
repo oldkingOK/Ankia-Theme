@@ -72,14 +72,21 @@
                     position: relative;
                     transform: translateX(-50%);
                     left: 50%;
-                    margin: 10px 0px;
-                    max-width: max-content;
+                    margin: 10px 0;
+                    max-width: 70%;
+                }
+
+                @media (max-width: 768px) {
+                    .root {
+                        max-width: max-content;
+                    }
                 }
 
                 .child {
                     border: 2px solid black;
                     background-color: #f0f0f0;
                     text-align: left;
+                    margin-bottom: 7px;
                 }
                 
                 h2, p {
@@ -177,21 +184,28 @@
                     border: 2px solid black;
                     background-color: #f0f0f0;
                     padding: 0 20px;
-                    max-width: max-content;
+                    max-width: 70%;
                     position: relative;
                     left: 50%;
                     transform: translateX(-50%);
                 }
 
+                @media (max-width: 768px) {
+                    .contents {
+                        max-width: max-content;
+                    }
+                }
+
                 img {
                     width: 100%;
-                    min-width: 42vh;
                     height: auto;
                 }
 
                 pre {
                     border: 2px solid black;
-                    white-space: break-spaces;
+                    white-space: pre;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
                 }
 
                 .hljs-ln td {
@@ -200,8 +214,22 @@
                 }
 
                 .hljs {
+                    overflow-x: scroll;
+                    -webkit-text-size-adjust: none;
                     background: #fff;
                     color: #000;
+                }
+
+                .collapsed {
+                    max-height: 180px;
+                }
+                .code-toggle {
+                    display: block;
+                    box-sizing: border-box;
+                    margin: 4px;
+                    color: #007bff;
+                    cursor: pointer;
+                    font-size: 14px;
                 }
             </style>
 
@@ -214,12 +242,52 @@
                 // Handle language highlighting
                 for (lang of hljs.listLanguages())
                     hljs.registerAliases("text-x-"+lang, {languageName: lang});
-                others = {'x-sh': 'shell', 'text-plain': 'plaintext'}
+                others = {'x-sh': 'shell', 'text-plain': 'plaintext', 'text-x-csrc': 'c', 'text-x-trilium-auto': 'plaintext'}
                 for (key in others)
                     hljs.registerAliases(key, {languageName: others[key]})
 
                 hljs.highlightAll()
                 hljs.initLineNumbersOnLoad();
+            </script>
+            <script>
+                let pres = document.querySelectorAll('pre');
+                for (let i = 0; i < pres.length; i++) {
+                    const pre = pres[i];
+                    if (!pre.textContent) continue;
+                    const lineCount = pre.textContent.trim().split('\n').length;
+
+                    if (lineCount > 10) {
+                        pre.classList.add('collapsed');
+                        const toggleTop = document.createElement('div');
+                        toggleTop.className = 'code-toggle top';
+                        toggleTop.textContent = '展开';
+
+                        const toggleBottom = document.createElement('div');
+                        toggleBottom.className = 'code-toggle bottom';
+                        toggleBottom.textContent = '展开';
+
+                        let lastScrollY = 0;
+                        const toggleAction = (event) => {
+                            const collapsed = pre.classList.toggle('collapsed');
+                            const newText = collapsed ? '展开' : '收回';
+                            toggleTop.textContent = newText;
+                            toggleBottom.textContent = newText;
+                            if (collapsed === true) {
+                                if (event.target.classList.contains('bottom'))
+                                    window.scrollTo(0, lastScrollY)
+                            } else {
+                                lastScrollY = window.scrollY;
+                                console.log("lastScrollY: ", lastScrollY);
+                            }
+                        };
+
+                        toggleTop.addEventListener('click', toggleAction);
+                        toggleBottom.addEventListener('click', toggleAction);
+
+                        pre.insertBefore(toggleTop, pre.firstChild);    // 插到最前
+                        pre.appendChild(toggleBottom);                  // 插到最后
+                    }
+                }
             </script>
 
         <% break;} %>
