@@ -208,7 +208,7 @@
                 }
 
                 pre {
-                    border: 2px solid black;
+                    border: 2px dotted black;
                     white-space: pre;
                     overflow-x: scroll;
                     overflow-y: hidden;
@@ -241,12 +241,22 @@
                 .toc {
                     margin-top: 20px;
                 }
+
+                blockquote {
+                    background-color: #F7EED6;
+                    margin: 0 20px;
+                    padding: 2px 40px;
+                    border: 1px solid black;
+                }
+
             </style>
 
             <h1 style="align-self: center;"><%= note.title %></h1>
             <div class="contents">
                 <div class="toc"></div>
+                <hr>
                 <%- content %>
+                <hr>
                 <div id="tcomment"></div>
             </div>
             <script>
@@ -332,7 +342,7 @@
             </script>
 
         <% break;} %>
-        <div>
+        <div style="position: fixed;bottom: 0;left: 50%;transform: translateX(-50%);font-size: 14px;color: gray;">
             <span>运行时间 <%= Math.ceil((new Date() - new Date(subRoot.note.getLabelValue("blogStartTime"))) / (24 * 60 * 60 * 1000)) %> 天</span>
             <span id="busuanzi_container_site_pv">| 总访问量 <span id="busuanzi_value_site_pv"></span></span>
         </div>
